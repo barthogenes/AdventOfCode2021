@@ -14,8 +14,7 @@ jobs:
       - python/install-packages:
           pkg-manager: poetry
       - run:
-          command: |
-            pytest --version
+          command: pytest --cov-report=xml
           name: Test/cover it
       - codecov/upload:
           file: ./coverage.xml
