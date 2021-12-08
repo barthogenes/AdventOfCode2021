@@ -14,10 +14,13 @@ jobs:
       - python/install-packages:
           pkg-manager: poetry
       - run:
-          command: poetry run pytest --cov-report=xml
+          command: poetry run pytest
           name: Test/cover it
+      - name: Generate Report
+        run: |
+          pip install coverage
+          coverage run -m pytest
       - codecov/upload:
-          file: ./coverage.xml
 
 workflows:
   workflow:
