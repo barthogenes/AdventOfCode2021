@@ -29,3 +29,4 @@ workflows:
   workflow:
     jobs:
       - build-and-test
+      - upload-coverage-report
