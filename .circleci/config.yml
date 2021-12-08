@@ -2,23 +2,24 @@ version: 2.1
 
 orbs:
   python: circleci/python@1.5
-  codecov: codecov/codecov@3.2
+  codecov: codecov/codecov@3.2.2
 
 jobs:
-  upload:
-    docker:
-      - image: cimg/base:stable
+  test-and-cover:
+    executor: 
+      name: python/default
+      tag: 3.9.7
     steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: poetry
+      - run:
+          command: poetry run pytest --cov-report=xml
+          name: Test/cover it
       - codecov/upload:
-          file: ./coverage.xml 
+          file: ./coverage.xml
 
 workflows:
   workflow:
     jobs:
-      - python/test:
-          test-tool: pytest 
-          test-tool-args: --cov-report=xml 
-          pkg-manager: poetry
-      - upload:
-          requires:
-            - "python/test"
+      - test-and-cover
