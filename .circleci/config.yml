@@ -17,16 +17,10 @@ jobs:
           command: |
             pytest --cov-report=xml
           name: Test/cover it
-  upload-coverage-report:
-    docker:
-      - image: cimg/base:stable
-    steps:
       - codecov/upload:
-          file: coverage.xml
-          flags: unittests
+          file: ./coverage.xml
 
 workflows:
   workflow:
     jobs:
       - build-and-test
-      - upload-coverage-report
