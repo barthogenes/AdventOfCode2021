@@ -1,8 +1,8 @@
 from get_puzzle_input import get_puzzle_input
-from sonar_sweep import sonar_sweep
+from sonar_sweep import sonar_sweep_part_1, sonar_sweep_part_2
 
 if __name__ == "__main__":
     puzzle_input = get_puzzle_input(2021, 1)
     print("Day 1: Sonar Sweep")
-    print("Answer 1: ")
-    print(sonar_sweep(puzzle_input))
+    print(f"Part 1 answer = {sonar_sweep_part_1(puzzle_input)}")
+    print(f"Part 2 answer = {sonar_sweep_part_2(puzzle_input)}")

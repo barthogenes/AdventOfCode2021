@@ -16,7 +16,6 @@ repos:
         -   id: check-toml
         -   id: debug-statements
         -   id: forbid-new-submodules
-        -   id: name-tests-test
     -   repo: local
         hooks:
         -   id: export-requirements
