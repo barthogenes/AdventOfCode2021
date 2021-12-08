@@ -16,7 +16,8 @@ jobs:
       - run:
           command: poetry run coverage run -m pytest
           name: Test/cover it
-      - codecov/upload
+      - codecov/upload:
+          file: ./.coverage
 
 workflows:
   workflow:
