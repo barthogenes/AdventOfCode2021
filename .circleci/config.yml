@@ -19,7 +19,7 @@ jobs:
             coverage xml
           name: Test/cover it
       - codecov/upload:
-          file: ./.coverage
+          file: ./coverage.xml
 
 workflows:
   workflow:
