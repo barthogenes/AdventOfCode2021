@@ -14,7 +14,9 @@ jobs:
       - python/install-packages:
           pkg-manager: poetry
       - run:
-          command: poetry run coverage run -m pytest
+          command: |
+            poetry run coverage run -m pytest
+            coverage xml
           name: Test/cover it
       - codecov/upload:
           file: ./.coverage
