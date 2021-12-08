@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   python: circleci/python@1.5
+  codecov: codecov/codecov@3.2.2
 
 jobs:
   build-and-test:
@@ -14,12 +15,15 @@ jobs:
           pkg-manager: poetry
       - run:
           command: |
-            poetry run pytest --version
-          name: Test it
-      - name: "Upload coverage to Codecov"
-        uses: codecov/codecov-action@v2
-        with:
-          fail_ci_if_error: true
+            pytest --cov-report=xml
+          name: Test/cover it
+  upload-coverage-report:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - codecov/upload:
+          file: coverage.xml
+          flags: unittests
 
 workflows:
   workflow:
