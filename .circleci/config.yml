@@ -14,13 +14,9 @@ jobs:
       - python/install-packages:
           pkg-manager: poetry
       - run:
-          command: poetry run pytest
+          command: poetry run coverage run -m pytest
           name: Test/cover it
-      - name: Generate Report
-        run: |
-          pip install coverage
-          coverage run -m pytest
-      - codecov/upload:
+      - codecov/upload
 
 workflows:
   workflow:
