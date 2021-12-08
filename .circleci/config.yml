@@ -21,4 +21,4 @@ workflows:
           pkg-manager: poetry
       - upload:
           requires:
-            - python/test
+            - "python/test"
