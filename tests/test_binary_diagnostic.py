@@ -20,4 +20,4 @@ def test_binary_diagnostic_part_1():
     result = binary_diagnostic_part_1(test_input)
 
     # Assert
-    assert result == 150
+    assert result == 198
