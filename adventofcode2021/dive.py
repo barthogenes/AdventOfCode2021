@@ -16,4 +16,19 @@ def dive_part_1(input: str):
 
 
 def dive_part_2(input: str):
-    return 0
+    horizontal_position = 0
+    aim = 0
+    depth = 0
+    for line in input.splitlines():
+        words = line.split(" ")
+        if words[0] == "forward":
+            horizontal_position += int(words[1])
+            depth += int(words[1]) * aim
+
+        if words[0] == "down":
+            aim += int(words[1])
+
+        if words[0] == "up":
+            aim -= int(words[1])
+
+    return horizontal_position * depth
