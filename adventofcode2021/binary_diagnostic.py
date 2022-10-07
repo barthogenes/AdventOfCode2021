@@ -1,12 +1,16 @@
 import numpy as np
 
 
-def binary_diagnostic_part_1(input: str):
+def get_transposed_input(input: str) -> np.ndarray:
     number_lines = []
     for line in input.splitlines():
         number_lines.append(np.fromiter(line, dtype=int))
 
-    numbers = np.stack(number_lines).transpose()
+    return np.stack(number_lines).transpose()
+
+
+def binary_diagnostic_part_1(input: str):
+    numbers = get_transposed_input(input)
     length = numbers.shape[1] / 2
 
     def to_most_common_bit(val: int):
